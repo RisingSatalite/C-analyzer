@@ -38,10 +38,17 @@ if(is_in_string):
     print("Error, string is opened, but no closed")
 
 varibles = []
+getting_varible_name = False
 
 for token in broken_up_list:
     print(token)
+    if(getting_varible_name):
+        varibles.append([token, getting_varible_name])
+        getting_varible_name = False
     if(token == "int"):
-        pass
+        getting_varible_name = token
+        continue
 
+for varible in varibles:
+    print(varible[0], varible[1])
 
