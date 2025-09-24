@@ -3,6 +3,12 @@ file = open("6.c", "r")
 broken_up_list = []
 string_holder = ""
 is_in_string = False
+previous_token = ''
+lineCount = 1
+latestLine = 1
+varibles = []
+getting_varible_name = False
+dataTypes = ['int','short','long','float','double','char','void']
 
 for line in file:
     print(line.strip()) 
@@ -35,11 +41,7 @@ for line in file:
             broken_up_list.append(token)
 
 if(is_in_string):
-    print("Error, string is opened, but no closed")
-
-varibles = []
-getting_varible_name = False
-dataTypes = ['int','short','long','float','double','char','void']
+    print("Error, string is opened, but not closed")
 
 for token in broken_up_list:
     print(token)
