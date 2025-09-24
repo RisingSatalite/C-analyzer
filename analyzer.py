@@ -39,13 +39,14 @@ if(is_in_string):
 
 varibles = []
 getting_varible_name = False
+dataTypes = ['int','short','long','float','double','char','void']
 
 for token in broken_up_list:
     print(token)
     if(getting_varible_name):
         varibles.append([token, getting_varible_name])
         getting_varible_name = False
-    if(token == "int"):
+    elif(token in dataTypes):
         getting_varible_name = token
         continue
 
