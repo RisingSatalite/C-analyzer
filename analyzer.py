@@ -9,6 +9,7 @@ latestLine = 0
 varibles = []
 getting_varible_name = False
 dataTypes = ['int','short','long','float','double','char','void']
+declarations = [';','.','(',')','+','=']
 
 for line in file:
     lineCount += 1
@@ -46,6 +47,9 @@ for line in file:
             except IndexError:
                 pass#Probably a space
         if(getting_varible_name):
+            if (token in declarations):
+                print(f"Error, var type is declared at {latestLine}, but given a declaration and not a varible")
+
             varibles.append([token, getting_varible_name])
             getting_varible_name = False
             print('Varible name determined')
