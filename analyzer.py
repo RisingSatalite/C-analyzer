@@ -8,7 +8,7 @@ lineCount = 0#Start at 0, but increased to 1 immediately in loop
 latestLine = 0
 varibles = []
 getting_varible_name = False
-dataTypes = ['int','short','long','float','double','char','void']
+dataTypes = ['int','short','long','float','double','char','void','string']
 declarations = [';','.','(',')','+','=']
 
 for line in file:
@@ -42,22 +42,33 @@ for line in file:
                     print("String closed")
                     is_in_string = False
                     broken_up_list.append(string_holder)
+                    print(string_holder)#This is the string
                     string_holder = ""
                     latestLine = lineCount
             except IndexError:
                 pass#Probably a space
         if(getting_varible_name):
             if (token in declarations):
-                print(f"Error, var type is declared at {latestLine}, but given a declaration and not a varible")
+                print(f"Error, var type is declared at line {latestLine}, but given a declaration and not a varible")
             else:
                 varibles.append([token, getting_varible_name])
                 getting_varible_name = False
                 print('Varible name determined')
-        if(token in dataTypes):
+        elif(token in dataTypes):
             print('Varible declaration detected')
             getting_varible_name = token
             continue
+        elif(token in declarations):
+            if(token == "."):
+                print("Using object property")
+            broken_up_list.append(token)
+        elif(token.strip() == ""):
+            print("Empty/spacing here")
+            continue
+        elif(token in varibles[0]):
+            print(f"Varible '{token}', used at line {latestLine}")
         else:
+            print(f"Error, unknown item '{token}' declared at line {latestLine}, this is not a varible or imported")
             broken_up_list.append(token)
     latestLine = lineCount
 
