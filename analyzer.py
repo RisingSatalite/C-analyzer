@@ -48,12 +48,9 @@ for line in file:
             except IndexError:
                 pass#Probably a space
         if(getting_varible_name):
-            if (token in declarations):
-                print(f"Error, var type is declared at line {latestLine}, but given a declaration and not a varible")
-            else:
-                varibles.append([token, getting_varible_name])
-                getting_varible_name = False
-                print('Varible name determined')
+            varibles.append([token, getting_varible_name])
+            getting_varible_name = False
+            print('Varible name determined')
         elif(token in dataTypes):
             print('Varible declaration detected')
             getting_varible_name = token
