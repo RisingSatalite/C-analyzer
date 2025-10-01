@@ -47,7 +47,7 @@ for line in file:
                     latestLine = lineCount
             except IndexError:
                 pass#Probably a space
-        if(getting_varible_name):
+        elif(getting_varible_name):
             varibles.append([token, getting_varible_name])
             getting_varible_name = False
             print('Varible name determined')
