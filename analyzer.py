@@ -63,9 +63,6 @@ for line in file:
             if(token == "."):
                 print("Using object property")
             broken_up_list.append(token)
-        elif(token.strip() == ""):
-            print("Empty/spacing here")
-            continue
         elif(any(token == v[0] for v in varibles)):
             print(f"Varible '{token}', used at line {latestLine}")
         else:
