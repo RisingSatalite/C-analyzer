@@ -15,13 +15,14 @@ for line in file:
     lineCount += 1
     print(line.strip()) 
 
-    line = line.replace("("," ( ")
-    line = line.replace(")"," ) ")
-    line = line.replace(":"," : ")
-    line = line.replace(";"," ; ")
-    line = line.replace("."," . ")
+    line = line.replace("(","#(#")
+    line = line.replace(")","#)#")
+    line = line.replace(":","#:#")
+    line = line.replace(";","#;#")
+    line = line.replace(".","#.#")
+    line = line.replace(" ","# #")
     print(line)
-    tokens = line.split(" ")
+    tokens = line.split("#")
 
     for token in tokens:
         print(token)
@@ -47,6 +48,9 @@ for line in file:
                     latestLine = lineCount
             except IndexError:
                 pass#Probably a space
+        elif(token.strip() == ""):
+            print("Empty")#We do not care about empty strings after this point, only for strings
+            continue
         elif(getting_varible_name):
             varibles.append([token, getting_varible_name])
             getting_varible_name = False
