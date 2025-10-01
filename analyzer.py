@@ -62,7 +62,7 @@ for line in file:
         elif(token.strip() == ""):
             print("Empty/spacing here")
             continue
-        elif(token in varibles[0]):
+        elif(any(token == v[0] for v in varibles)):
             print(f"Varible '{token}', used at line {latestLine}")
         else:
             print(f"Error, unknown item '{token}' declared at line {latestLine}, this is not a varible or imported")
