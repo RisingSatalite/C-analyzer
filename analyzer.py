@@ -9,7 +9,7 @@ latestLine = 0
 varibles = []
 getting_varible_name = False
 dataTypes = ['int','short','long','float','double','char','void','string']
-declarations = [';','.','(',')','+','=']
+declarations = [';','.','(',')','+','=',':']
 
 for line in file:
     lineCount += 1
